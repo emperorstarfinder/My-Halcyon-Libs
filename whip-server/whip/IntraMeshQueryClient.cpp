@@ -3,7 +3,7 @@
 #include "IntraMeshQueryClient.h"
 #include "IntraMeshService.h"
 
-namespace wcintramesh
+namespace iwintramesh
 {
 	IntraMeshQueryClient::IntraMeshQueryClient(boost::asio::io_service& ioService,
 		IntraMeshService& meshService, IAsyncStorageBackend::ptr diskBackend,
@@ -28,7 +28,7 @@ namespace wcintramesh
 	{
 		_connectedEp = _conn.remote_endpoint();
 
-		SAFELOG(AppLog::instance().out() << "[WCINTRAMESH] Accepted query connection from server: " << _connectedEp << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWINTRAMESH] Accepted query connection from server: " << _connectedEp << std::endl);
 
 		int BUF_SZ = whip::Settings::instance().get("tcp_bufsz").as<int>();
 
@@ -60,7 +60,7 @@ namespace wcintramesh
 	void IntraMeshQueryClient::printIoError(const std::string& method, const boost::system::error_code& error)
 	{
 		SAFELOG(AppLog::instance().error() 
-			<< "[WCINTRAMESH] ioerror " << method << ": " << error.message() << std::endl);
+			<< "[IWINTRAMESH] ioerror " << method << ": " << error.message() << std::endl);
 	}
 
 	void IntraMeshQueryClient::onMeshMessageReceived(const boost::system::error_code& error,
@@ -90,7 +90,7 @@ namespace wcintramesh
 
 			default:
 				SAFELOG(AppLog::instance().error() 
-					<< "[WCINTRAMESH] " << __FUNCTION__ 
+					<< "[IWINTRAMESH] " << __FUNCTION__ 
 					<< ": Unexpected message: Type: " << inboundMsg->getRequestType() << " "
 					<< "From: " << _connectedEp << " "
 					<< "Size: " << inboundMsg->getDataStorage().size()
@@ -101,7 +101,7 @@ namespace wcintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[WCINTRAMESH] " << __FUNCTION__ 
+				<< "[IWINTRAMESH] " << __FUNCTION__ 
 				<< ": Message was invalid: Type: " << inboundMsg->getRequestType() << " "
 				<< "From: " << _connectedEp << " "
 				<< "Size: " << inboundMsg->getDataStorage().size()
@@ -114,7 +114,7 @@ namespace wcintramesh
 	void IntraMeshQueryClient::processMeshQuery(IntraMeshMsg::ptr inboundMsg)
 	{
 		if (_debugging) {
-			SAFELOG(AppLog::instance().out() << "[WCINTRAMESH] Received MESH_QUERY for " 
+			SAFELOG(AppLog::instance().out() << "[IWINTRAMESH] Received MESH_QUERY for " 
 				<< inboundMsg->getAssetUUID() 
 				<< " from "
 				<< _connectedEp
@@ -130,7 +130,7 @@ namespace wcintramesh
 			}
 
 		} catch (const std::exception& e) {
-			SAFELOG(AppLog::instance().error() << "[WCINTRAMESH] Error while processing MESH_QUERY for " 
+			SAFELOG(AppLog::instance().error() << "[IWINTRAMESH] Error while processing MESH_QUERY for " 
 				<< inboundMsg->getAssetUUID() 
 				<< " from " 
 				<< _connectedEp
@@ -145,7 +145,7 @@ namespace wcintramesh
 	void IntraMeshQueryClient::sendAssetFound(IntraMeshMsg::ptr inboundMsg)
 	{
 		if (_debugging) {
-			SAFELOG(AppLog::instance().out() << "[WCINTRAMESH] Asset found for " 
+			SAFELOG(AppLog::instance().out() << "[IWINTRAMESH] Asset found for " 
 				<< inboundMsg->getAssetUUID() 
 				<< std::endl);
 		}
@@ -160,7 +160,7 @@ namespace wcintramesh
 	void IntraMeshQueryClient::sendAssetNotFound(IntraMeshMsg::ptr inboundMsg)
 	{
 		if (_debugging) {
-			SAFELOG(AppLog::instance().out() << "[WCINTRAMESH] Asset not found for " 
+			SAFELOG(AppLog::instance().out() << "[IWINTRAMESH] Asset not found for " 
 				<< inboundMsg->getAssetUUID() 
 				<< std::endl);
 		}
@@ -172,7 +172,7 @@ namespace wcintramesh
 	void IntraMeshQueryClient::sendAssetError(IntraMeshMsg::ptr inboundMsg)
 	{
 		if (_debugging) {
-			SAFELOG(AppLog::instance().out() << "[WCINTRAMESH] Error checking for " 
+			SAFELOG(AppLog::instance().out() << "[IWINTRAMESH] Error checking for " 
 				<< inboundMsg->getAssetUUID() 
 				<< std::endl);
 		}

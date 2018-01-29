@@ -8,7 +8,7 @@
 #include <boost/filesystem.hpp>
 #include <windows.h>
 
-namespace wcvfs
+namespace iwvfs
 {
 	/**
 		IDataFile implementation for windows

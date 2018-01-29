@@ -25,7 +25,7 @@ private:
 	boost::asio::io_service& _ioService;
 	boost::weak_ptr<AssetClient> _client;
 	IAsyncStorageBackend::ptr _storage;
-	wcintramesh::MeshStorageBackend::ptr _meshStorage;
+	iwintramesh::MeshStorageBackend::ptr _meshStorage;
 
 	/**
 		The challenge sent to the client
@@ -54,7 +54,7 @@ private:
 
 public:
 	CSUnauthenticated(boost::asio::io_service& ioService, IAsyncStorageBackend::ptr storage,
-		wcintramesh::MeshStorageBackend::ptr meshStorage);
+		iwintramesh::MeshStorageBackend::ptr meshStorage);
 	virtual ~CSUnauthenticated();
 
 	virtual void setClient(AssetClientPtr client);

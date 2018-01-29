@@ -30,7 +30,7 @@ private:
 
 	boost::asio::io_service& _ioService;
 	IAsyncStorageBackend::ptr _storage;
-	wcintramesh::MeshStorageBackend::ptr _meshStorage;
+	iwintramesh::MeshStorageBackend::ptr _meshStorage;
 	boost::weak_ptr<AssetClient> _client;
 
 	bool _isActive;
@@ -80,7 +80,7 @@ private:
 
 public:
 	CSAuthenticated(boost::asio::io_service& ioService, IAsyncStorageBackend::ptr storage,
-		wcintramesh::MeshStorageBackend::ptr meshStorage, bool isMeshConnection);
+		iwintramesh::MeshStorageBackend::ptr meshStorage, bool isMeshConnection);
 	virtual ~CSAuthenticated();
 
 	virtual void setClient(AssetClientPtr client);

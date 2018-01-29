@@ -7,7 +7,7 @@
 
 namespace fs = boost::filesystem;
 
-namespace wcvfs
+namespace iwvfs
 {
 
 ExistenceIndex::ExistenceIndex(const std::string& storageRoot)
@@ -23,7 +23,7 @@ ExistenceIndex::ExistenceIndex(const std::string& storageRoot)
 	{
 		if (fs::is_directory(itr->status()) ) {
 			if (i % 100 == 0) {
-				SAFELOG(AppLog::instance().out() << "[WCVFS] Processing index " << itr->path().string() << std::endl);
+				SAFELOG(AppLog::instance().out() << "[IWVFS] Processing index " << itr->path().string() << std::endl);
 			}
 			
 			this->processDirectory(itr->path());

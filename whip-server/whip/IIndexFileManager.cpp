@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "IIndexFileManager.h"
 
-namespace wcvfs
+namespace iwvfs
 {
 	IIndexFileManager::~IIndexFileManager()
 	{

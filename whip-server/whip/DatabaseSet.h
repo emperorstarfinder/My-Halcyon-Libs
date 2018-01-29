@@ -6,7 +6,7 @@
 #include "VFSDatabase.h"
 #include <boost/filesystem.hpp>
 
-namespace wcvfs
+namespace iwvfs
 {
 	/**
 		Represents a set of databases that would be appropritate

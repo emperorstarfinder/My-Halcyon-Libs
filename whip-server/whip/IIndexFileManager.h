@@ -3,7 +3,7 @@
 #include "IIndexFileImplementation.h"
 #include <boost/filesystem.hpp>
 
-namespace wcvfs 
+namespace iwvfs 
 {
 	/**
 		Manages classes of index files and takes care of opening and closing the files

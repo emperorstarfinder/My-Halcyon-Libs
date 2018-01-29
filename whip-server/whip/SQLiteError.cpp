@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "SQLiteError.h"
 
-namespace wcvfs
+namespace iwvfs
 {
 
 	SQLiteError::SQLiteError(const std::string message, int errorCode, int extendedCode)

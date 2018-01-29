@@ -8,7 +8,7 @@
 
 #include "AssetStorageError.h"
 
-namespace wcvfs
+namespace iwvfs
 {
 
 	WinDataFileImpl::WinDataFileImpl()
@@ -24,7 +24,7 @@ namespace wcvfs
 
 	void WinDataFileImpl::doThrow(const std::string& errorMessage)
 	{
-		throw AssetStorageError("[WCVFS][WIN32/64] " + errorMessage + " [" + _filePath.string() + "]", true);
+		throw AssetStorageError("[IWVFS][WIN32/64] " + errorMessage + " [" + _filePath.string() + "]", true);
 	}
 
 	void WinDataFileImpl::open(const boost::filesystem::path& filePath, FileMode mode)
@@ -52,7 +52,7 @@ namespace wcvfs
 			FILE_ATTRIBUTE_NORMAL, NULL);
 
 		if (_fileHandle == INVALID_HANDLE_VALUE) {
-			throw AssetStorageError("[WCVFS][WIN32/64] Unable to open data file for writing [" + filePath.string() + "]", true);
+			throw AssetStorageError("[IWVFS][WIN32/64] Unable to open data file for writing [" + filePath.string() + "]", true);
 		} else {
 			_filePath = filePath;
 		}

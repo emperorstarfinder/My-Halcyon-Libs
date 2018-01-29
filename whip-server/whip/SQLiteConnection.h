@@ -11,7 +11,7 @@
 
 #include "sqlite3.h"
 
-namespace wcvfs
+namespace iwvfs
 {
 	typedef std::map<std::string, boost::any> DBRow;
 	typedef boost::shared_ptr<DBRow> DBRowPtr;

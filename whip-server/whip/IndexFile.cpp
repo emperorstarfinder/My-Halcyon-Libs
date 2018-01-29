@@ -9,7 +9,7 @@
 namespace fs = boost::filesystem;
 using namespace std;
 
-namespace wcvfs
+namespace iwvfs
 {
 	IIndexFileManager::ptr IndexFile::_FileManager;
 

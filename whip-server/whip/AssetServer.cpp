@@ -11,7 +11,7 @@
 #include <boost/foreach.hpp>
 
 using boost::asio::ip::tcp;
-using namespace wcintramesh;
+using namespace iwintramesh;
 using namespace boost::posix_time;
 
 extern boost::asio::io_service* AppIoService;
@@ -87,7 +87,7 @@ IAsyncStorageBackend::ptr AssetServer::selectStorageBackend(const std::string& b
 	IAsyncStorageBackend::ptr backend;
 
 	if (boost::to_lower_copy(backendName) == "vfs") {
-		boost::shared_ptr<wcvfs::VFSBackend> vfs(new wcvfs::VFSBackend(storageRoot, enablePurge, _ioService, _pushReplicationSvc));
+		boost::shared_ptr<iwvfs::VFSBackend> vfs(new iwvfs::VFSBackend(storageRoot, enablePurge, _ioService, _pushReplicationSvc));
 
 		_index = vfs->getIndex();
 

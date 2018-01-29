@@ -11,14 +11,14 @@
 
 #ifdef _WIN32
 	#include "WinDataFileImpl.h"
-	namespace wcvfs {
+	namespace iwvfs {
 		typedef WinDataFileImpl DataFileImpl;
 	}
 #endif
 
 #ifdef __linux__
 	#include "PosixDataFileImpl.h"
-	namespace wcvfs {
+	namespace iwvfs {
 		typedef PosixDataFileImpl DataFileImpl;
 	}
 #endif
@@ -26,7 +26,7 @@
 namespace fs = boost::filesystem;
 using namespace std;
 
-namespace wcvfs
+namespace iwvfs
 {
 
 	DataFile::DataFile(const boost::filesystem::path& filePath)
@@ -71,7 +71,7 @@ namespace wcvfs
 		//grab the position for the indexer
 		boost::uint64_t pos;
 		if (! fileExisted) {
-			dataFile->write("WCZDDB01", 8);
+			dataFile->write("IWZDDB01", 8);
 			pos = 8;
 		} else {
 			pos = dataFile->size();

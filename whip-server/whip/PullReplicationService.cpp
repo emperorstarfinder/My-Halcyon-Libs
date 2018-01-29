@@ -13,7 +13,7 @@
 
 
 PullReplicationService::PullReplicationService(const boost::asio::ip::tcp::endpoint& replicationMasterEndpoint,
-	int pullFrequency, wcvfs::ExistenceIndex::ptr existenceIndex, IAsyncStorageBackend::ptr storageBackend)
+	int pullFrequency, iwvfs::ExistenceIndex::ptr existenceIndex, IAsyncStorageBackend::ptr storageBackend)
 	: _replicationMasterEndpoint(replicationMasterEndpoint), _pullFrequency(pullFrequency), _existenceIndex(existenceIndex),
 		_storageBackend(storageBackend), _stop(false), _serviceThread(), _ioService(), _connected(false),
 		_reconnectTimer(_ioService), _currentStep(RS_NONE), _replRestartTimer(_ioService)

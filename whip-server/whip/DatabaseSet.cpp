@@ -3,7 +3,7 @@
 
 #include "AssetStorageError.h"
 
-namespace wcvfs
+namespace iwvfs
 {
 	DatabaseSet::DatabaseSet(const boost::filesystem::path& databaseRoot)
 		:	_globalDB(new VFSDatabase("globals", databaseRoot)),
@@ -62,7 +62,7 @@ namespace wcvfs
 		} else if (_localDB->assetExists(uuid)) {
 			_localDB->purgeAsset(uuid);
 		} else {
-			throw AssetStorageError("[WCVFS] Could not purge asset " + uuid + ", asset not found in database storage"); 
+			throw AssetStorageError("[IWVFS] Could not purge asset " + uuid + ", asset not found in database storage"); 
 		}
 	}
 }

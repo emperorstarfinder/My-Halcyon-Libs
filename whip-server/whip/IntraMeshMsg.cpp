@@ -5,7 +5,7 @@
 
 #include <boost/numeric/conversion/cast.hpp>
 
-namespace wcintramesh
+namespace iwintramesh
 {
 	IntraMeshMsg::IntraMeshMsg()
 		: _data(IntraMeshMsg::MAX_PACKET)

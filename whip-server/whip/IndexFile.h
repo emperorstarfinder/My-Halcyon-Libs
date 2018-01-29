@@ -8,7 +8,7 @@
 #include <boost/cstdint.hpp>
 #include <vector>
 
-namespace wcvfs
+namespace iwvfs
 {
 	/**
 		The index portion of the InWorldz VFS database

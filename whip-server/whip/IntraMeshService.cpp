@@ -14,7 +14,7 @@
 
 using namespace boost::asio::ip;
 
-namespace wcintramesh
+namespace iwintramesh
 {
 	int IntraMeshService::_meshReqSinceLastPoll;
 	int IntraMeshService::_positiveRespSinceLastPoll;
@@ -58,7 +58,7 @@ namespace wcintramesh
 		//config errors
 		whip::Settings::instance().intraMeshPeers();
 
-		SAFELOG(AppLog::instance().out() << "[WCINTRAMESH] Intramesh starting on TCP/" << port << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWINTRAMESH] Intramesh starting on TCP/" << port << std::endl);
 	}
 
 	IntraMeshService::~IntraMeshService()
@@ -133,7 +133,7 @@ namespace wcintramesh
 			this->doHeartBeat();
 
 		} catch (const std::exception& e) {
-			SAFELOG(AppLog::instance().out() << "[WCINTRAMESH] Exception thrown during heartbeat: " 
+			SAFELOG(AppLog::instance().out() << "[IWINTRAMESH] Exception thrown during heartbeat: " 
 				<< e.what()
 				<< std::endl);
 		}
@@ -284,7 +284,7 @@ namespace wcintramesh
 	void IntraMeshService::queryClientDisconnected(IntraMeshQueryClient::ptr client)
 	{
 		SAFELOG(AppLog::instance().out() 
-			<< "[WCINTRAMESH] Query Client Disconnect: " << client->getEndpoint()
+			<< "[IWINTRAMESH] Query Client Disconnect: " << client->getEndpoint()
 			<< std::endl);
 
 		_connectedClients.erase(client);

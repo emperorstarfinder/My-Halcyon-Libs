@@ -19,7 +19,7 @@
 /**
  *	Namespace for InWorldz virtual file system components
  */
-namespace wcvfs
+namespace iwvfs
 {
 	/**
 		InWorldz virtual file system storage backend.  Provides access

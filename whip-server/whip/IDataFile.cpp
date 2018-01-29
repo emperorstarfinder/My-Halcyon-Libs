@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "IDataFile.h"
 
-namespace wcvfs
+namespace iwvfs
 {
 	IDataFile::~IDataFile()
 	{

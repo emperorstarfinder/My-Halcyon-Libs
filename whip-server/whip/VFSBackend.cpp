@@ -27,7 +27,7 @@
 namespace fs = boost::filesystem;
 using namespace boost::posix_time;
 
-namespace wcvfs
+namespace iwvfs
 {
 
 	VFSBackend::VFSBackend(const std::string& storageRoot, bool enablePurge, boost::asio::io_service& ioService,
@@ -36,7 +36,7 @@ namespace wcvfs
 		_isPurgingLocals(false), _currentLocalsPurgeIndex(0), _diskLatencyAvg(DISK_LATENCY_SAMPLE_SIZE),
 		_diskOpAvg(DISK_LATENCY_SAMPLE_SIZE), _pushRepl(pushRepl)
 	{
-		SAFELOG(AppLog::instance().out() << "[WCVFS] Starting storage backend" << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWVFS] Starting storage backend" << std::endl);
 
 		//make sure the storage root exists
 		if (! fs::exists(_storageRoot)) {
@@ -44,19 +44,19 @@ namespace wcvfs
 				+ storageRoot + "' was not found");
 		}
 
-		SAFELOG(AppLog::instance().out() << "[WCVFS] Root: " << storageRoot << ", Purge: " << (_enablePurge ? "enabled" : "disabled") << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWVFS] Root: " << storageRoot << ", Purge: " << (_enablePurge ? "enabled" : "disabled") << std::endl);
 		_debugging = whip::Settings::instance().get("debug").as<bool>();
 
-		SAFELOG(AppLog::instance().out() << "[WCVFS] SQLite Index Backend: SQLite v" << sqlite3_libversion() << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWVFS] SQLite Index Backend: SQLite v" << sqlite3_libversion() << std::endl);
 
 		//TODO:  Should be deleted on shutdown
 		IIndexFileManager::ptr indexFileManager(new SQLiteIndexFileManager());
 		IndexFile::SetIndexFileManager(indexFileManager);
 
-		SAFELOG(AppLog::instance().out() << "[WCVFS] Generating asset existence index" << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWVFS] Generating asset existence index" << std::endl);
 		_existenceIndex.reset(new ExistenceIndex(storageRoot));
 
-		SAFELOG(AppLog::instance().out() << "[WCVFS] Starting disk I/O worker thread" << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWVFS] Starting disk I/O worker thread" << std::endl);
 		_workerThread.reset(new boost::thread(boost::bind(&VFSBackend::workLoop, this)));
 	}
 
@@ -120,13 +120,13 @@ namespace wcvfs
 
 	void VFSBackend::assetWriteFailed(std::string assetId, std::string reason)
 	{
-		SAFELOG(AppLog::instance().error() << "[WCVFS] Asset write failed for " << assetId << ": " << reason << std::endl);
+		SAFELOG(AppLog::instance().error() << "[IWVFS] Asset write failed for " << assetId << ": " << reason << std::endl);
 		_existenceIndex->removeId(kashmir::uuid::uuid_t(assetId.c_str()));
 	}
 
 	void VFSBackend::ioLoopFailed(std::string reason)
 	{
-		SAFELOG(AppLog::instance().error() << "[WCVFS] Critical warning: ioWorker caught exception: " << reason << std::endl);
+		SAFELOG(AppLog::instance().error() << "[IWVFS] Critical warning: ioWorker caught exception: " << reason << std::endl);
 	}
 
 	void VFSBackend::performDiskRead(const std::string& assetId, AsyncGetAssetCallback callback)
@@ -334,7 +334,7 @@ namespace wcvfs
 	void VFSBackend::beginPurgeLocals()
 	{
 		if (! _isPurgingLocals) {
-			SAFELOG(AppLog::instance().out() << "[WCVFS] PurgeLocals command received, beginning purge" << std::endl);
+			SAFELOG(AppLog::instance().out() << "[IWVFS] PurgeLocals command received, beginning purge" << std::endl);
 			_isPurgingLocals = true;
 			_currentLocalsPurgeIndex = 0;
 			_purgeLocalsTimer.expires_from_now(boost::posix_time::seconds(1));
@@ -352,7 +352,7 @@ namespace wcvfs
 			std::string assetId(hexNum.str());
 			AssetRequest::ptr req(new AssetPurgeRequest(assetId, true));
 
-			SAFELOG(AppLog::instance().out() << "[WCVFS] Queueing purge of: " << assetId << std::endl);
+			SAFELOG(AppLog::instance().out() << "[IWVFS] Queueing purge of: " << assetId << std::endl);
 
 			boost::mutex::scoped_lock lock(_workMutex);
 			_workQueue.push_back(req);
@@ -366,7 +366,7 @@ namespace wcvfs
 			}
 
 		} else {
-			SAFELOG(AppLog::instance().out() << "[WCVFS] PurgeLocals timer execution error: " << error.message() << std::endl);
+			SAFELOG(AppLog::instance().out() << "[IWVFS] PurgeLocals timer execution error: " << error.message() << std::endl);
 		}
 	}
 
@@ -430,7 +430,7 @@ namespace wcvfs
 
 	void VFSBackend::shutdown()
 	{
-		SAFELOG(AppLog::instance().out() << "[WCVFS] Performing clean shutdown" << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWVFS] Performing clean shutdown" << std::endl);
 
 		_stop = true;
 
@@ -443,10 +443,10 @@ namespace wcvfs
 			_workerThread->join();
 		}
 
-		SAFELOG(AppLog::instance().out() << "[WCVFS] Closing indexes" << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWVFS] Closing indexes" << std::endl);
 		IndexFile::GetIndexFileManager()->shutdown();
 
-		SAFELOG(AppLog::instance().out() << "[WCVFS] Shutdown complete" << std::endl);
+		SAFELOG(AppLog::instance().out() << "[IWVFS] Shutdown complete" << std::endl);
 	}
 
 	ExistenceIndex::ptr VFSBackend::getIndex()

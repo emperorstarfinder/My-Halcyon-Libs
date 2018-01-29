@@ -5,7 +5,7 @@
 #include <string>
 #include <boost/filesystem.hpp>
 
-namespace wcvfs
+namespace iwvfs
 {
 
 	class PosixDataFileImpl : public IDataFile

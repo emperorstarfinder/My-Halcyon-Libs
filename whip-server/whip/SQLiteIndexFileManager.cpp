@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "SQLiteIndexFileManager.h"
 
-namespace wcvfs
+namespace iwvfs
 {
 	SQLiteIndexFileManager::SQLiteIndexFileManager()
 	: _openFiles(SQLiteIndexFileManager::MAX_OPEN_FILES)

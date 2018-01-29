@@ -6,7 +6,7 @@
 #include "lru_cache.h"
 #include "SQLiteIndexFile.h"
 
-namespace wcvfs 
+namespace iwvfs 
 {
 	/**
 		Manages open sqlite files to serve as indexes for datafiles

@@ -6,7 +6,7 @@
 #include "IIndexFileImplementation.h"
 #include "SQLiteConnection.h"
 
-namespace wcvfs 
+namespace iwvfs 
 {
 	/**
 		Uses an sqlite database to keep tract of the file locations of

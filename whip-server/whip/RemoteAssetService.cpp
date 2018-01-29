@@ -390,7 +390,7 @@ void RemoteAssetService::onReadResponseHeader(const boost::system::error_code& e
 				} else {
 					// there is no data to read. We can safely start listening again
 					SAFELOG(AppLog::instance().error() 
-						<< "[WCINTRAMESH] No further error data is available "
+						<< "[IWINTRAMESH] No further error data is available "
 						<< std::endl);
 
 					//tell the waiter this transfer broke
@@ -410,7 +410,7 @@ void RemoteAssetService::onReadResponseHeader(const boost::system::error_code& e
 
 	} else {
 		SAFELOG(AppLog::instance().error() 
-			<< "[WCINTRAMESH] Error while reading asset header from mesh server "
+			<< "[IWINTRAMESH] Error while reading asset header from mesh server "
 			<< _endpoint
 			<< ": "
 			<< error.message()
