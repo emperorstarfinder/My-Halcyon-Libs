@@ -8,7 +8,7 @@
 #include <set>
 
 
-namespace iwvfs
+namespace wcvfs
 {
 /**
 	Index loaded at server startup of all asset UUIDs contained on this server. 

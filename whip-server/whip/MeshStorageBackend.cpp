@@ -7,7 +7,7 @@
 
 #include <boost/foreach.hpp>
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	MeshStorageBackend::MeshStorageBackend(IntraMeshService& intraMeshService, 
 		boost::asio::io_service& ioService)

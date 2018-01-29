@@ -16,7 +16,7 @@ namespace pt = boost::posix_time;
 	= whip::ObjectPool<ServerResponseMsg::ptr, ServerResponseMsgCreator>(ServerResponseMsgCreator());*/
 
 CSAuthenticated::CSAuthenticated(boost::asio::io_service& ioService, IAsyncStorageBackend::ptr storage,
-								 iwintramesh::MeshStorageBackend::ptr meshStorage,
+								 wcintramesh::MeshStorageBackend::ptr meshStorage,
 								 bool isMeshConnection)
 : _ioService(ioService), _storage(storage), _meshStorage(meshStorage), _isMeshConnection(isMeshConnection),
 	_isActive(false), _activeSince(pt::second_clock::local_time())

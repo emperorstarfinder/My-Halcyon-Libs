@@ -115,7 +115,7 @@ namespace whipstress
 
         static void ExecCmd(RemoteServer server, string cmd)
         {
-            if (cmd == "iwim_heartbeat")
+            if (cmd == "wcim_heartbeat")
             {
                 Socket sendSocket = new Socket(AddressFamily.InterNetwork,
                    SocketType.Dgram, ProtocolType.Udp);
@@ -138,14 +138,14 @@ namespace whipstress
                 sendSocket.Close();
             }
 
-            if (cmd == "iwim_query_random" || cmd == "iwim_query_random_loop")
+            if (cmd == "wcim_query_random" || cmd == "wcim_query_random_loop")
             {
                 Socket sendSocket = new Socket(AddressFamily.InterNetwork,
                     SocketType.Dgram, ProtocolType.Udp);
 
                 int loops;
 
-                if (cmd == "iwim_query_random")
+                if (cmd == "wcim_query_random")
                 {
                     loops = 1;
                 }
@@ -177,7 +177,7 @@ namespace whipstress
                 Console.WriteLine("Done {0}", DateTime.Now);
             }
 
-            if (cmd.Length > 10 && cmd.Substring(0, 10) == "iwim_query")
+            if (cmd.Length > 10 && cmd.Substring(0, 10) == "wcim_query")
             {
                 string uuid = cmd.Substring(11);
 

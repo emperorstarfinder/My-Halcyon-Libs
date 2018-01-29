@@ -13,7 +13,7 @@
 #include <string>
 #include <queue>
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	/**
 	 * Represents a connection to a mesh query service on a remote server

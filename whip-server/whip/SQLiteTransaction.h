@@ -2,7 +2,7 @@
 
 #include "SQLiteConnection.h"
 
-namespace iwvfs
+namespace wcvfs
 {
 	/**
 		Manages beginning and end of transactions.  Rolls back a transaction if destroyed before calling commit

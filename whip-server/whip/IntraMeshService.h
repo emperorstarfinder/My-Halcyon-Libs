@@ -16,7 +16,7 @@
 #include <map>
 #include <set>
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	class MeshStorageBackend;
 	typedef boost::shared_ptr<MeshStorageBackend> MeshStorageBackendPtr;

@@ -7,7 +7,7 @@
 #include <boost/foreach.hpp>
 #include <sstream>
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	AssetSearch::AssetSearch(IntraMeshService& meshService, boost::asio::io_service& ioService,
 		MeshStorageBackend* meshBackend, const std::string& searchUUID, 
@@ -35,13 +35,13 @@ namespace iwintramesh
 	{
 		if (_wasFound) {
 			SAFELOG(AppLog::instance().out() 
-				<< "[IWINTRAMESH] Warning: BUG: asset already found but search result callback activated"
+				<< "[WCINTRAMESH] Warning: BUG: asset already found but search result callback activated"
 				<< std::endl);
 		}
 
 		if (assetUUID != _uuid) {
 			SAFELOG(AppLog::instance().out() 
-				<< "[IWINTRAMESH] Warning: BUG: Asset UUID doesnt match asset searched for"
+				<< "[WCINTRAMESH] Warning: BUG: Asset UUID doesnt match asset searched for"
 				<< std::endl);
 		}
 
@@ -145,7 +145,7 @@ namespace iwintramesh
 			}
 
 			SAFELOG(AppLog::instance().out() 
-				<< "[IWINTRAMESH] Warning: Timeout while waiting for response from intramesh for asset "
+				<< "[WCINTRAMESH] Warning: Timeout while waiting for response from intramesh for asset "
 				<< _uuid
 				<< " canceled: " << servers.str()
 				<< std::endl);

@@ -9,7 +9,7 @@
 
 #include <set>
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	class IntraMeshService;
 

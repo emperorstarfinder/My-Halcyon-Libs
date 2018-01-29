@@ -7,7 +7,7 @@
 
 #include "Asset.h"
 
-namespace iwvfs
+namespace wcvfs
 {
 	/**
 		Represents the large object storage file

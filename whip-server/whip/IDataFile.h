@@ -4,7 +4,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/cstdint.hpp>
 
-namespace iwvfs
+namespace wcvfs
 {
 	/**
 		Interface to a vfs data file

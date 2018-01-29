@@ -27,7 +27,7 @@ void addId(sqlite3_stmt* stmt)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	using namespace iwvfs;
+	using namespace wcvfs;
 
 	if (argc < 2) return 2;
 

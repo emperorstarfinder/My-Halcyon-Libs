@@ -12,7 +12,7 @@
 #include "SQLiteError.h"
 #include "VFSCommon.h"
 
-namespace iwvfs 
+namespace wcvfs 
 {
 	const int SQLiteIndexFile::VERSION = 1;
 

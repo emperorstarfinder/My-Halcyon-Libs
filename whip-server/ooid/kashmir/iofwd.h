@@ -59,7 +59,7 @@ typedef basic_ios_locale_saver<wchar_t>     wios_locale_saver;
 typedef basic_ios_all_saver<char>            ios_all_saver;
 typedef basic_ios_all_saver<wchar_t>        wios_all_saver;
 
-class ios_iword_saver;
+class ios_wcord_saver;
 class ios_pword_saver;
 class ios_all_word_saver;
 

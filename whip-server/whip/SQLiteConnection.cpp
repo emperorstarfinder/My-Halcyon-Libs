@@ -10,7 +10,7 @@
 
 using namespace boost::assign; // bring 'map_list_of()' into scope
 
-namespace iwvfs
+namespace wcvfs
 {
 	SQLiteConnection::SQLiteConnection(const boost::filesystem::path& path)
 	{

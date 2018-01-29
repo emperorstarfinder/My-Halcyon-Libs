@@ -36,8 +36,8 @@ private:
 	boost::asio::ip::tcp::acceptor _acceptor;
 	IAsyncStorageBackend::ptr _storage;
 	IAsyncStorageBackend::ptr _diskStorage;
-	iwintramesh::IntraMeshService::ptr _intraMeshService;
-	iwvfs::ExistenceIndex::ptr _index;
+	wcintramesh::IntraMeshService::ptr _intraMeshService;
+	wcvfs::ExistenceIndex::ptr _index;
 	
 	/**
 	A list of all clients connected

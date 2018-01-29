@@ -1,7 +1,7 @@
 #include "StdAfx.h"
 #include "SQLiteTransaction.h"
 
-namespace iwvfs
+namespace wcvfs
 {
 	SQLiteTransaction::SQLiteTransaction(SQLiteConnection::ptr dbConn)
 	: _committed(false), _dbConn(dbConn)

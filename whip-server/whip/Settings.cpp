@@ -52,7 +52,7 @@ namespace whip
 			("allow_purge", po::value<bool>()->default_value(false), "Whether or not to allow the purge operation")
 			("debug", po::value<bool>()->default_value(false), "Enable debugging")
 			("intramesh_peers", po::value<std::string>()->default_value(""), "Peers to contact on intramesh heartbeat and for intramesh queries")
-			("intramesh_port", po::value<unsigned short>()->default_value(iwintramesh::IntraMeshService::DEFAULT_PORT), "Port to listen on for intramesh queries")
+			("intramesh_port", po::value<unsigned short>()->default_value(wcintramesh::IntraMeshService::DEFAULT_PORT), "Port to listen on for intramesh queries")
 			("is_writable", po::value<bool>(), "Whether or not this server is accepting writes")
 			("tcp_bufsz", po::value<int>()->default_value(TCP_BUFFSZ_DEFAULT), "The size of the recieve and send buffers for TCP connections")
 			("udp_bufsz", po::value<int>()->default_value(UDP_BUFFSZ_DEFAULT), "The size of the recieve and send buffers for UDP connections")

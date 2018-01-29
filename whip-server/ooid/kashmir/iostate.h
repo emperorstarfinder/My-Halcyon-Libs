@@ -285,34 +285,34 @@ private:
 
 //  User-defined stream state saver class declarations  ----------------------//
 
-class ios_iword_saver
+class ios_wcord_saver
 {
 public:
     typedef ::std::ios_base  state_type;
     typedef int              index_type;
     typedef long             aspect_type;
 
-    explicit ios_iword_saver( state_type &s, index_type i )
-        : s_save_( s ), a_save_( s.iword(i) ), i_save_( i )
+    explicit ios_wcord_saver( state_type &s, index_type i )
+        : s_save_( s ), a_save_( s.wcord(i) ), i_save_( i )
         {}
-    ios_iword_saver( state_type &s, index_type i, aspect_type const &a )
-        : s_save_( s ), a_save_( s.iword(i) ), i_save_( i )
-        { s.iword(i) = a; }
-    ~ios_iword_saver()
+    ios_wcord_saver( state_type &s, index_type i, aspect_type const &a )
+        : s_save_( s ), a_save_( s.wcord(i) ), i_save_( i )
+        { s.wcord(i) = a; }
+    ~ios_wcord_saver()
         { this->restore(); }
 
     const aspect_type& value() const
         { return a_save_; }
 
     void  restore()
-        { s_save_.iword( i_save_ ) = a_save_; }
+        { s_save_.wcord( i_save_ ) = a_save_; }
 
 private:
     state_type &       s_save_;
     aspect_type const  a_save_;
     index_type const   i_save_;
 
-    ios_iword_saver& operator=(const ios_iword_saver&);
+    ios_wcord_saver& operator=(const ios_wcord_saver&);
 };
 
 class ios_pword_saver
@@ -427,7 +427,7 @@ public:
     typedef int              index_type;
 
     ios_all_word_saver( state_type &s, index_type i )
-        : s_save_( s ), i_save_( i ), a1_save_( s.iword(i) )
+        : s_save_( s ), i_save_( i ), a1_save_( s.wcord(i) )
         , a2_save_( s.pword(i) )
         {}
 
@@ -437,7 +437,7 @@ public:
     void  restore()
     {
         s_save_.pword( i_save_ ) = a2_save_;
-        s_save_.iword( i_save_ ) = a1_save_;
+        s_save_.wcord( i_save_ ) = a1_save_;
     }
 
 private:

@@ -18,7 +18,7 @@ using boost::asio::ip::tcp;
 using boost::asio::ip::udp;
 using std::string;
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	MeshServer::MeshServer(const boost::asio::ip::tcp::endpoint& listeningEndpoint,
 		const boost::asio::ip::tcp::endpoint& assetServiceEndpoint, boost::asio::io_service& ioService,
@@ -169,7 +169,7 @@ namespace iwintramesh
 	{
 		if (! error) {
 			SAFELOG(AppLog::instance().out() 
-				<< "[IWINTRAMESH] Connection established to query service on intramesh server: "
+				<< "[WCINTRAMESH] Connection established to query service on intramesh server: "
 				<< _assetServiceEndpoint
 				<< std::endl);
 
@@ -177,7 +177,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Unable to make connection to asset service on intramesh server: "
+				<< "[WCINTRAMESH] Unable to make connection to asset service on intramesh server: "
 				<< _assetServiceEndpoint
 				<< std::endl);
 			
@@ -190,7 +190,7 @@ namespace iwintramesh
 	{
 		if (! error) {
 			SAFELOG(AppLog::instance().out() 
-				<< "[IWINTRAMESH] Connection established to asset service on intramesh server: "
+				<< "[WCINTRAMESH] Connection established to asset service on intramesh server: "
 				<< _assetServiceEndpoint
 				<< std::endl);
 
@@ -212,7 +212,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Unable to make connection to asset service on intramesh server: "
+				<< "[WCINTRAMESH] Unable to make connection to asset service on intramesh server: "
 				<< _assetServiceEndpoint
 				<< std::endl);
 			
@@ -239,7 +239,7 @@ namespace iwintramesh
 		if (!error && bytesRcvd > 0) {
 			if (! authStatus->validate()) {
 				SAFELOG(AppLog::instance().error() 
-					<< "[IWINTRAMESH] Unable to authenticate with asset service on intramesh server: "
+					<< "[WCINTRAMESH] Unable to authenticate with asset service on intramesh server: "
 					<< _assetServiceEndpoint
 					<< ": The server's authentication response was invalid"
 					<< std::endl);
@@ -251,7 +251,7 @@ namespace iwintramesh
 
 			if (authStatus->getAuthStatus() != AS_AUTH_SUCCESS) {
 				SAFELOG(AppLog::instance().error() 
-					<< "[IWINTRAMESH] Unable to authenticate with asset service on intramesh server: "
+					<< "[WCINTRAMESH] Unable to authenticate with asset service on intramesh server: "
 					<< _assetServiceEndpoint
 					<< ": Invalid credentials"
 					<< std::endl);
@@ -266,7 +266,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Unable to authenticate with asset service on intramesh server: "
+				<< "[WCINTRAMESH] Unable to authenticate with asset service on intramesh server: "
 				<< _assetServiceEndpoint
 				<< ": "
 				<< error.message()
@@ -292,7 +292,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Unable to authenticate with asset service on intramesh server: "
+				<< "[WCINTRAMESH] Unable to authenticate with asset service on intramesh server: "
 				<< _assetServiceEndpoint
 				<< ": "
 				<< error.message()
@@ -311,7 +311,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Unable to authenticate with asset service on intramesh server: "
+				<< "[WCINTRAMESH] Unable to authenticate with asset service on intramesh server: "
 				<< _assetServiceEndpoint
 				<< std::endl);
 			
@@ -465,7 +465,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Error while writing asset request to mesh server "
+				<< "[WCINTRAMESH] Error while writing asset request to mesh server "
 				<< _assetServiceEndpoint
 				<< ": "
 				<< error.message()
@@ -516,7 +516,7 @@ namespace iwintramesh
 			} else {
 				//error, not found, or other condition
 				SAFELOG(AppLog::instance().error() 
-					<< "[IWINTRAMESH] Unexpected asset error on server that already confirmed "
+					<< "[WCINTRAMESH] Unexpected asset error on server that already confirmed "
 					<< "asset exists. "
 					<< "mesh query ep: " << _meshQueryEndpoint << ", "
 					<< "asset svc ep: " << _assetServiceEndpoint << ", "
@@ -561,7 +561,7 @@ namespace iwintramesh
 					} else {
 						// there is no data to read. We can safely start listening again
 						SAFELOG(AppLog::instance().error() 
-							<< "[IWINTRAMESH] No further error data is available "
+							<< "[WCINTRAMESH] No further error data is available "
 							<< std::endl);
 
 						this->listenForAssetData();
@@ -575,7 +575,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Error while reading asset header from mesh server "
+				<< "[WCINTRAMESH] Error while reading asset header from mesh server "
 				<< _assetServiceEndpoint
 				<< ": "
 				<< error.message()
@@ -596,7 +596,7 @@ namespace iwintramesh
 			error.insert(error.begin(), response->getData()->begin(), response->getData()->end());
 
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Error follows: "
+				<< "[WCINTRAMESH] Error follows: "
 				<< "mesh query ep: " << _meshQueryEndpoint << ", "
 				<< "asset svc ep: " << _assetServiceEndpoint << ", "
 				<< "error msg: " << error
@@ -630,7 +630,7 @@ namespace iwintramesh
 			} else {
 				//something is very wrong
 				SAFELOG(AppLog::instance().error() 
-					<< "[IWINTRAMESH] Asset data received does not match next waiting request "
+					<< "[WCINTRAMESH] Asset data received does not match next waiting request "
 					<< _assetServiceEndpoint
 					<< " expected: " << req.get<0>()
 					<< " got: " << meshAsset->getUUID()
@@ -644,7 +644,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Error while reading asset data from mesh server "
+				<< "[WCINTRAMESH] Error while reading asset data from mesh server "
 				<< _assetServiceEndpoint
 				<< ": "
 				<< error.message()

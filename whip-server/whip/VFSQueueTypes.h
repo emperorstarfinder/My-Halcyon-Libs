@@ -8,7 +8,7 @@
 #include <iosfwd>
 
 
-namespace iwvfs
+namespace wcvfs
 {
 	class VFSBackend;
 

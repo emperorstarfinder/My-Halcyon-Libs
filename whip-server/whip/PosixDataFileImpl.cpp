@@ -8,7 +8,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-namespace iwvfs
+namespace wcvfs
 {
 
 	PosixDataFileImpl::PosixDataFileImpl() : _fd(0)
@@ -34,12 +34,12 @@ namespace iwvfs
 			creationMode = 0;
 		} else {
 			openFlags = O_WRONLY | O_CREAT;
-			creationMode = (S_IWUSR | S_IRUSR) | (S_IWGRP | S_IRGRP);
+			creationMode = (S_WCUSR | S_IRUSR) | (S_WCGRP | S_IRGRP);
 		}
 
 		_fd = ::open(filePath.string().c_str(), openFlags, creationMode);
 		if (_fd == -1) {
-			throw AssetStorageError("[IWVFS][POSIX] Unable to open data file for writing [" + _filePath.string() + "]", true);
+			throw AssetStorageError("[WCVFS][POSIX] Unable to open data file for writing [" + _filePath.string() + "]", true);
 		}
 
 		_filePath = filePath;
@@ -55,7 +55,7 @@ namespace iwvfs
 		 struct stat sb;
 
 		 if (fstat(_fd, &sb) == -1) {
-			 throw AssetStorageError("[IWVFS][POSIX] Unable to stat data file to retrieve size [" + _filePath.string() + "]", true);
+			 throw AssetStorageError("[WCVFS][POSIX] Unable to stat data file to retrieve size [" + _filePath.string() + "]", true);
 		 }
 
 		 return (boost::int64_t) sb.st_size;
@@ -66,11 +66,11 @@ namespace iwvfs
 		ssize_t bytesRead = ::read(_fd, data, size);
 
 		if (bytesRead == -1) {
-			throw AssetStorageError("[IWVFS][POSIX] Error while reading from data file [" + _filePath.string() + "]", true);
+			throw AssetStorageError("[WCVFS][POSIX] Error while reading from data file [" + _filePath.string() + "]", true);
 		}
 		
 		if (bytesRead != size) {
-			throw AssetStorageError("[IWVFS][POSIX] Short read encountered while reading from data file [" + _filePath.string() + "]", true);
+			throw AssetStorageError("[WCVFS][POSIX] Short read encountered while reading from data file [" + _filePath.string() + "]", true);
 		}
 	}
 
@@ -79,18 +79,18 @@ namespace iwvfs
 		ssize_t bytesWritten = ::write(_fd, data, size);
 
 		if (bytesWritten == -1) {
-			throw AssetStorageError("[IWVFS][POSIX] Error while writing to data file [" + _filePath.string() + "]", true);
+			throw AssetStorageError("[WCVFS][POSIX] Error while writing to data file [" + _filePath.string() + "]", true);
 		}
 		
 		if (bytesWritten != size) {
-			throw AssetStorageError("[IWVFS][POSIX] Short write encountered while writing to data file [" + _filePath.string() + "]", true);
+			throw AssetStorageError("[WCVFS][POSIX] Short write encountered while writing to data file [" + _filePath.string() + "]", true);
 		}
 	}
 
 	void PosixDataFileImpl::doSeek(boost::int64_t position)
 	{
 		if (lseek(_fd, (off_t) position, SEEK_SET) == (off_t) -1) {
-			throw AssetStorageError("[IWVFS][POSIX] Error while seeking file [" + _filePath.string() + "]", true);
+			throw AssetStorageError("[WCVFS][POSIX] Error while seeking file [" + _filePath.string() + "]", true);
 		}
 	}
 

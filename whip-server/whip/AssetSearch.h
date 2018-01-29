@@ -11,7 +11,7 @@
 #include <set>
 #include <string>
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	class MeshStorageBackend;
 

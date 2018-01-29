@@ -5747,13 +5747,13 @@ SQLITE_API int sqlite3_status(int op, int *pCurrent, int *pHighwater, int resetF
 ** to grow in future releases of SQLite.
 **
 ** ^The current value of the requested parameter is written into *pCur
-** and the highest instantaneous value is written into *pHiwtr.  ^If
+** and the highest instantaneous value is written into *pHwctr.  ^If
 ** the resetFlg is true, then the highest instantaneous value is
 ** reset back down to the current value.
 **
 ** See also: [sqlite3_status()] and [sqlite3_stmt_status()].
 */
-SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHiwtr, int resetFlg);
+SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHwctr, int resetFlg);
 
 /*
 ** CAPI3REF: Status Parameters for database connections
@@ -28068,8 +28068,8 @@ static int proxyTakeConch(unixFile *pFile){
           struct stat buf;
           int err = fstat(pFile->h, &buf);
           if( err==0 ){
-            mode_t cmode = buf.st_mode&(S_IRUSR|S_IWUSR | S_IRGRP|S_IWGRP |
-                                        S_IROTH|S_IWOTH);
+            mode_t cmode = buf.st_mode&(S_IRUSR|S_WCUSR | S_IRGRP|S_WCGRP |
+                                        S_IROTH|S_WCOTH);
             /* try to match the database file R/W permissions, ignore failure */
 #ifndef SQLITE_PROXY_DEBUG
             fchmod(conchFile->h, cmode);
@@ -76300,7 +76300,7 @@ SQLITE_PRIVATE void sqlite3MultiWrite(Parse *pParse){
 **
 ** Technically, we only need to set the mayAbort flag if the
 ** isMultiWrite flag was previously set.  There is a time dependency
-** such that the abort must occur after the multiwrite.  This makes
+** such that the abort must occur after the multwcrite.  This makes
 ** some statements involving the REPLACE conflict resolution algorithm
 ** go a little faster.  But taking advantage of this time dependency
 ** makes it more difficult to prove that the code is correct (in 

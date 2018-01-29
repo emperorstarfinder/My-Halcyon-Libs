@@ -10,7 +10,7 @@
 
 namespace fs = boost::filesystem;
 
-namespace iwvfs
+namespace wcvfs
 {
 	VFSDatabase::VFSDatabase(const std::string& fileNameBase, const fs::path& path)
 		: _fileNameBase(fileNameBase), _path(path)
@@ -63,7 +63,7 @@ namespace iwvfs
 
 	void VFSDatabase::purgeAsset(const std::string& uuid)
 	{
-		throw AssetStorageError("[IWVFS] Purge is not yet implemented for VFS");
+		throw AssetStorageError("[WCVFS] Purge is not yet implemented for VFS");
 	}
 
 }

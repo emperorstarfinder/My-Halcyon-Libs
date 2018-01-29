@@ -5,7 +5,7 @@
 #include "IndexFile.h"
 #include "DataFile.h"
 
-namespace iwvfs
+namespace wcvfs
 {
 	/**
 		Represents a single vfs database that consists of an index file and a 

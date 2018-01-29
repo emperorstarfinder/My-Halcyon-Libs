@@ -20,7 +20,7 @@
 #include <map>
 #include <queue>
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	class AssetSearch;
 	typedef boost::weak_ptr<AssetSearch> AssetSearchWPtr;

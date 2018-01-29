@@ -4,7 +4,7 @@
 #include "Settings.h"
 #include "AppLog.h"
 
-namespace iwintramesh
+namespace wcintramesh
 {
 
 	MeshQueryConnection::MeshQueryConnection(boost::asio::io_service& ioService,
@@ -36,7 +36,7 @@ namespace iwintramesh
 	{
 		if (! error) {
 			SAFELOG(AppLog::instance().out() 
-				<< "[IWINTRAMESH] Connection established to query service on intramesh server: "
+				<< "[WCINTRAMESH] Connection established to query service on intramesh server: "
 				<< _endPoint
 				<< std::endl);
 
@@ -51,7 +51,7 @@ namespace iwintramesh
 
 		} else {
 			SAFELOG(AppLog::instance().error() 
-				<< "[IWINTRAMESH] Unable to make connection to query service on intramesh server: "
+				<< "[WCINTRAMESH] Unable to make connection to query service on intramesh server: "
 				<< _endPoint
 				<< std::endl);
 			
@@ -145,7 +145,7 @@ namespace iwintramesh
 	void MeshQueryConnection::printIoError(const std::string& method, const boost::system::error_code& error)
 	{
 		SAFELOG(AppLog::instance().error() 
-			<< "[IWINTRAMESH] ioerror " << method << ": " << error.message() << std::endl);
+			<< "[WCINTRAMESH] ioerror " << method << ": " << error.message() << std::endl);
 	}
 
 	bool MeshQueryConnection::isConnected() const

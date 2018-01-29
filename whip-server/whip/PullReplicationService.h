@@ -29,7 +29,7 @@ private:
 
 	boost::asio::ip::tcp::endpoint _replicationMasterEndpoint;
 	int _pullFrequency;
-	iwvfs::ExistenceIndex::ptr _existenceIndex;
+	wcvfs::ExistenceIndex::ptr _existenceIndex;
 	IAsyncStorageBackend::ptr _storageBackend;
 	bool _stop;
 	boost::thread _serviceThread;
@@ -89,7 +89,7 @@ private:
 
 public:
 	PullReplicationService(const boost::asio::ip::tcp::endpoint& replicationMasterEndpoint,
-		int pullFrequency, iwvfs::ExistenceIndex::ptr existenceIndex,
+		int pullFrequency, wcvfs::ExistenceIndex::ptr existenceIndex,
 		IAsyncStorageBackend::ptr storageBackend);
 	virtual ~PullReplicationService();
 

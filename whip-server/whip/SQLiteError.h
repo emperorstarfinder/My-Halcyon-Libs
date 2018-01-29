@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-namespace iwvfs
+namespace wcvfs
 {
 	/**
 		An error thrown by the sqlite database engine

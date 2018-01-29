@@ -1,6 +1,6 @@
 #pragma once
 
-namespace iwintramesh
+namespace wcintramesh
 {
 	/**
 	 * Message sent between servers for intramesh communications 

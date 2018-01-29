@@ -5211,13 +5211,13 @@ SQLITE_API int sqlite3_status(int op, int *pCurrent, int *pHighwater, int resetF
 ** to grow in future releases of SQLite.
 **
 ** ^The current value of the requested parameter is written into *pCur
-** and the highest instantaneous value is written into *pHiwtr.  ^If
+** and the highest instantaneous value is written into *pHwctr.  ^If
 ** the resetFlg is true, then the highest instantaneous value is
 ** reset back down to the current value.
 **
 ** See also: [sqlite3_status()] and [sqlite3_stmt_status()].
 */
-SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHiwtr, int resetFlg);
+SQLITE_API int sqlite3_db_status(sqlite3*, int op, int *pCur, int *pHwctr, int resetFlg);
 
 /*
 ** CAPI3REF: Status Parameters for database connections

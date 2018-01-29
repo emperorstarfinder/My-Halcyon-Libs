@@ -70,7 +70,7 @@ void AssetClient::AddMeshTransferToStats(int bytes)
 
 
 AssetClient::AssetClient(boost::asio::io_service& ioService, AssetServer& server, 
-						 IAsyncStorageBackend::ptr storage, iwintramesh::MeshStorageBackend::ptr meshStorage) : 
+						 IAsyncStorageBackend::ptr storage, wcintramesh::MeshStorageBackend::ptr meshStorage) : 
 _ioService(ioService), _assetServer(server), _conn(ioService), _storage(storage),
 _meshStorage(meshStorage)
 {

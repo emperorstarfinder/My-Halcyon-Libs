@@ -23,7 +23,7 @@ private:
 	boost::asio::ip::tcp::endpoint _ep;
 	IConnectionState::ptr _state;
 	IAsyncStorageBackend::ptr _storage;
-	iwintramesh::MeshStorageBackend::ptr _meshStorage;
+	wcintramesh::MeshStorageBackend::ptr _meshStorage;
 
 	//statistics 
 	static int _reqSinceLastPoll;
@@ -49,7 +49,7 @@ public:
 
 public:
 	AssetClient(boost::asio::io_service& ioService, AssetServer& server, IAsyncStorageBackend::ptr storage,
-		iwintramesh::MeshStorageBackend::ptr meshStorage);
+		wcintramesh::MeshStorageBackend::ptr meshStorage);
 	virtual ~AssetClient();
 
 	/**

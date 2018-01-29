@@ -5,7 +5,7 @@
 
 using namespace boost::posix_time;
 
-namespace iwvfs
+namespace wcvfs
 {
 	AssetRequest::AssetRequest(AssetRequestType type)
 		: _requestType(type), _submitted(microsec_clock::universal_time())

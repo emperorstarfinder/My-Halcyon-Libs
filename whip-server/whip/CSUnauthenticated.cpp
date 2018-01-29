@@ -8,7 +8,7 @@
 #include "AssetClient.h"
 
 CSUnauthenticated::CSUnauthenticated(boost::asio::io_service& ioService, IAsyncStorageBackend::ptr storage,
-									 iwintramesh::MeshStorageBackend::ptr meshStorage)
+									 wcintramesh::MeshStorageBackend::ptr meshStorage)
 : _ioService(ioService), _storage(storage), _meshStorage(meshStorage), _isMeshConnection(false)
 {
 

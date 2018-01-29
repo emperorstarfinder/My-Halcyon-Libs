@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-namespace iwvfs
+namespace wcvfs
 {
 	class IndexFileError : public std::runtime_error
 	{
