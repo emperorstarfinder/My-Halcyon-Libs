@@ -1,0 +1,127 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Chrysalis Transformation API
+  description: >
+    REST API provided by the Chrysalis Transformation Gateway
+host: chrysalis.localhost
+schemes:
+  - http
+  - https
+paths:
+  /texture/{uuid}:
+    get:
+      tags:
+      - "Texture"
+      summary: "Retrieves the given texture in the best available format"
+      operationId: "getTexture"
+      parameters:
+      - name: "uuid"
+        in: "path"
+        description: "The UUID of the texture to retrieve"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: file
+        default:
+          description: "Error response"
+      x-swagger-router-controller: "Texture"
+
+  /geometry/hp2b:
+      post:
+        tags:
+        - "Geometry"
+        summary: "Converts the POSTed binary primitive object to a babylon flatbuffer"
+        operationId: "convertHalcyonGeomToBabylon"
+        parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          "schema": {
+            "type": "string",
+            "format": "byte"
+          }
+        responses:
+          200:
+            description: "Successful response"
+            schema:
+              type: file
+          default:
+            description: "Error response"
+        x-swagger-router-controller: "Geometry"
+
+  /geometry/hg2b:
+      post:
+        tags:
+        - "Geometry"
+        summary: "Converts the POSTed binary primitive group to a babylon flatbuffer"
+        operationId: "convertHalcyonGroupGeomToBabylon"
+        parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          "schema": {
+            "type": "string",
+            "format": "byte"
+          }
+        responses:
+          200:
+            description: "Successful response"
+            schema:
+              type: file
+          default:
+            description: "Error response"
+        x-swagger-router-controller: "Geometry"
+
+  /geometry/grouphash:
+      post:
+        tags:
+        - "Geometry"
+        summary: "Hashes halcyon group for instancing"
+        operationId: "GetHalcyonGroupHash"
+        produces: 
+        - "text/plain"
+        parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          "schema": {
+            "type": "string",
+            "format": "byte"
+          }
+        responses:
+          200:
+            description: "Successful response"
+            examples:
+              text/plain: "4t34f5r4tr34"
+          default:
+            description: "Error response"
+        x-swagger-router-controller: "Geometry"
+
+  /geometry/primhash:
+      post:
+        tags:
+        - "Geometry"
+        summary: "Hashes halcyon prim for instancing"
+        operationId: "GetHalcyonPrimHash"
+        produces: 
+        - "text/plain"
+        parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          "schema": {
+            "type": "string",
+            "format": "byte"
+          }
+        responses:
+          200:
+            description: "Successful response"
+            examples:
+              text/plain: "4t34f5r4tr34"
+          default:
+            description: "Error response"
+        x-swagger-router-controller: "Geometry" 
